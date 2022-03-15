@@ -13,6 +13,11 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sprockets', '< 4'
 gem 'sassc-rails'
 gem 'faker'
+gem 'rack-cors'
+gem 'active_model_serializers'
+gem 'rspotify'
+gem 'themoviedb'
+
 
 group :development do
   gem 'htmlbeautifier'

@@ -12,3 +12,8 @@
  *
  *= require_self
  */
+
+
+.carousel-inner{
+  max-width: 20%;
+}

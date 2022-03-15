@@ -1,0 +1,47 @@
+
+<%#= p @links.text %>
+<%#= p @movieinfo %>
+
+<% @links.first(5).each do |movie| %>
+  <div class="row">
+    <div class="col-sm">
+      <% newmovie = Movie.new %>
+      <%= newmovie = movie.text %>
+    </div>
+    <div class="col-sm">
+      <% @search = Tmdb::Search.new
+         @search.query(newmovie) # the query to search against
+         @result = @search.fetch # makes request  %>
+      <% id = @result[0]['id'] %>
+      <% movie = Tmdb::Movie.detail(id)%>
+      <% poster = "https://image.tmdb.org/t/p/original/" + movie.fetch("poster_path") %>
+      <img src=<%=poster%> class="img-fluid" max height="10%" alt="poster">
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2022 Skimpyrat Inc. &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></p>
+  </footer>
+</main>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
+
+
+
+
+     
+
+
+

@@ -14,6 +14,12 @@ require "action_view/railtie"
 # require "action_cable/engine"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require 'rspotify'
+require 'themoviedb'
+RSpotify::authenticate("617a6814f63f4de6be98b264feae2ad0", "57434de19c404fe29773701e552083a6")
+Tmdb::Api.key("c5d0d37c96da6a961f4122776396ec75")
+
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

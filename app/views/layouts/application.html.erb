@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html>
+<div class="container">
   <head>
     <title>FinalProject</title>
     <%= csrf_meta_tags %>
+          <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
+      <meta charset="utf-8">
+
+      <!-- Connect Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+      <!-- Connect Bootstrap JavaScript and its dependencies -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Connect Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+      <!-- Make it responsive to small screens -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
     <meta charset="utf-8">
@@ -12,10 +28,28 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-
   </head>
+</div>
 
   <body>
+
+        <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" href="/test">Sign in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/scrape">Scraping</a>
+      </li>
+      </li>
+    </ul>
+
+    <nav>
+      <ul>
+        <li><a href="/movies">Home</a></li>
+        <li><a href="/spotify_accounts">Spotify Accounts</a></li>
+        <li><a href="/user_sign_in">Sign in to spotify</a></li>
+    </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
