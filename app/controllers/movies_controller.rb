@@ -34,21 +34,6 @@ class MoviesController < ApplicationController
     end
   end
 
-  def scrape 
-    # Will throw in Spotify artist here
-    artist = "Hans+Zimmer"
-    url = "https://www.imdb.com/search/title-text/?soundtracks=" + artist
-    webpage = HTTP.get(url)
-    @parsed_page = Nokogiri::HTML(webpage.body.to_s)    
-    @links = @parsed_page.css(".lister-item-index+ a")
-
-
-    @firstmovie = @links.first
-    @passmovie = @firstmovie.text
-    # @movieinfo = TMDb::Movie.search(@passmovie)
-    # @posterpath = TMDB::Movie.find(@poster_path)
-    render({ :template => "movies/scrape.html.erb" }) 
-  end
 
   def update
     the_id = params.fetch("path_id")

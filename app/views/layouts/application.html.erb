@@ -2,7 +2,7 @@
 <html>
 <div class="container">
   <head>
-    <title>FinalProject</title>
+    <title>Movify</title>
     <%= csrf_meta_tags %>
           <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
       <meta charset="utf-8">
@@ -35,21 +35,10 @@
 
         <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" href="/test">Sign in</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/scrape">Scraping</a>
-      </li>
+        <a class="nav-link active" href="/test">Sign into Spotify</a>
       </li>
     </ul>
 
-    <nav>
-      <ul>
-        <li><a href="/movies">Home</a></li>
-        <li><a href="/spotify_accounts">Spotify Accounts</a></li>
-        <li><a href="/user_sign_in">Sign in to spotify</a></li>
-    </ul>
-    </nav>
     <%= yield %>
   </body>
 </html>

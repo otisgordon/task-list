@@ -59,15 +59,46 @@ before_action(:force_user_sign_in, {:only => [:index,:show]})
   end
 
   def spotify
-    @accounts = Spotify::Accounts.new
-    @accounts.client_id = "spotify client ID"
-    @accounts.client_secret = "spotify client secret"
-    @accounts.redirect_uri = "redirect URI"
-    @accounts.authorize_url({
-      scope: "user-read-private user-read-email user-top-read"
-    })
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+    # Now you can access user's private data, create playlists and much more
+    # user = User.find_or_create_by({ :spotify_info => spotify_user.to_hash })
+
+    # Access private data
+    spotify_user.country #=> "US"
+    spotify_user.email   #=> "example@email.com"
+
+    # Get user's top played artists and tracks
+    @topartists = spotify_user.top_artists(time_range: 'short_term') #=> (Artist array)
+    @toptracks = spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
+
+    artistarray = Array.new
+    @topartists.each do |item|
+      plusname = item.name.gsub(" ", " ")
+      artistarray.push(plusname)
+    end
     
-    redirect_to("/", { :notice => "Hi!"} )
+    @returnedscrape = Array.new
+    artistarray.first(5).each do |song|
+      @song = song
+      # For each of the songs in the artist array, go do ferrum browser
+      browser = Ferrum::Browser.new
+      coolurl = browser.go_to("https://www.what-song.com/")
+      input = browser.at_css('.SearchDropdown_mainSearchInput__u_rA8')
+      input.focus.type(song)
+      browser.wait_for_reload(3)
+      dropdown = browser.at_css('.SearchDropdown_typeLink__1RIWf')
+      @newurl = dropdown.attribute(:href)
+      browser.quit
+      @url = "https://www.what-song.com" + @newurl
+      @webpage = HTTP.get(@url)
+      @parsed_page = Nokogiri::HTML(@webpage.body.to_s)
+      @links = @parsed_page.css(".ArtistSongCard_movieTitle__3Bx0u")
+      @first = @links
+      # @returnedscrape = @first.text
+      @returnedscrape.push({song => @first.text})
+    end
+    
+    render({ :template => "movies/scrape.html.erb" }) 
   end
 
 end

@@ -17,6 +17,10 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'rspotify'
 gem 'themoviedb'
+gem "omniauth-rails_csrf_protection", "1.0.1"
+gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+gem "ferrum"
+
 
 
 group :development do

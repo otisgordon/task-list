@@ -7,4 +7,5 @@
 #  updated_at :datetime         not null
 #
 class SpotifyAccount < ApplicationRecord
+  serialize(:spotify_info)
 end
