@@ -19,18 +19,45 @@
   min-inline-size: 100%;
   margin: 0;
   box-sizing: border-box;
-  display: grid;
   place-content: center;
   font-family: 'Ramaraja', serif;
 }
 
+.gif{
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.title{
+  margin-top: 8vh;
+  font-size: 50px;
+  text-align: center;
+  color: rgb(87, 189, 112);
+  font-family: 'Ramaraja', serif;
+
+}
+
+.buttonman{
+  text-align: center;
+  padding-top: 70px;
+}
+
 h1::before {  
   transform: scaleX(0);
-  transform-origin: bottom right;
+  transform: scaleY(0);
+  transform-origin: bottom left;
+}
+
+.info{
+  font-size: 20px;
+  text-align: left;
+  padding-left: 8%;
+  font-family: 'Ramaraja', serif;
 }
 
 h1:hover::before {
-  transform: scaleX(1);
+  transform: scaleX(.75);
+  transform: scaleY(.8);
   transform-origin: bottom left;
 }
 
@@ -42,7 +69,7 @@ h1::before {
   content: " ";
   display: block;
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 20; right: 0; bottom: 0; left: 0;
   inset: 0 0 0 0;
   background: rgba(15, 158, 34, 0.404);
   z-index: -1;
@@ -51,7 +78,6 @@ h1::before {
 
 h1 {
   position: relative;
-  font-size: 5rem;
 }
 
 @media (orientation: landscape) {
@@ -121,7 +147,6 @@ h1 {
   font-family: 'Alfa Slab One', cursive;
 }
 
-
 .pic-ctn {
   position: relative;
   width: 10vw;
@@ -150,4 +175,31 @@ img:nth-child(4) {
 }
 img:nth-child(5) {
   animation-delay: 32s;
+}
+
+@media only screen 
+  and (min-device-width: 100px) 
+  and (max-device-width: 400px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    .buttonman{
+      visibility: visible;
+      padding-top: 20px;
+    }
+    .gif{
+      visibility: hidden;
+      display: none;
+    }
+
+    .h1::before{
+      visibility: hidden;
+    }
+
+    .h1:hover::before {
+      transform: scaleX(1);
+      transform: scaleY(2);
+      transform-origin: bottom left;
+    }
+
+    
+
 }
