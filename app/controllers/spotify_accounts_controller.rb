@@ -71,14 +71,17 @@ before_action(:force_user_sign_in, {:only => [:index,:show]})
     @topartists = spotify_user.top_artists(time_range: 'short_term') #=> (Artist array)
     @toptracks = spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
 
-    artistarray = Array.new
+    @artistarray = Array.new
+    @posterarray = Array.new
+
     @topartists.each do |item|
       plusname = item.name.gsub(" ", " ")
-      artistarray.push(plusname)
+      @artistarray.push(plusname)
     end
     
     @returnedscrape = Array.new
-    artistarray.first(5).each do |song|
+    @newscrape = Array.new
+    @artistarray.first(5).each do |song|
       @song = song
       # For each of the songs in the artist array, go do ferrum browser
       browser = Ferrum::Browser.new
@@ -89,15 +92,27 @@ before_action(:force_user_sign_in, {:only => [:index,:show]})
       dropdown = browser.at_css('.SearchDropdown_typeLink__1RIWf')
       @newurl = dropdown.attribute(:href)
       browser.quit
+
       @url = "https://www.what-song.com" + @newurl
       @webpage = HTTP.get(@url)
       @parsed_page = Nokogiri::HTML(@webpage.body.to_s)
       @links = @parsed_page.css(".ArtistSongCard_movieTitle__3Bx0u")
-      @first = @links
-      # @returnedscrape = @first.text
-      @returnedscrape.push({song => @first.text})
+      @rightposter = @parsed_page.css(".ArtistSongCard_moviePoster__14LFP")
+      
+      # This is getting the posterpath to big Theif
+      @rightposter.first(5).each do |posterpath|
+        meep = posterpath.attribute('src').text
+        @posterarray.push(meep)
+      end 
+
+      # This is getting the movie thats associated with it
+      @links.first(5).each do |songwithmovies|
+        @movieshow = songwithmovies.text.split("•")[0]
+        @returnedscrape.push(@movieshow)
+      end
+      
     end
-    
+
     render({ :template => "movies/scrape.html.erb" }) 
   end
 

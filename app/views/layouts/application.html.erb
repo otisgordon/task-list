@@ -2,8 +2,10 @@
 <html>
 <div class="container">
   <head>
-    <title>Movify</title>
-    <%= csrf_meta_tags %>
+    <title>Spotifyboxoffice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Creepster&family=Press+Start+2P&family=Ramaraja&family=Smokum&display=swap" rel="stylesheet"    <%= csrf_meta_tags %>
           <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
       <meta charset="utf-8">
 
@@ -32,12 +34,6 @@
 </div>
 
   <body>
-
-        <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link active" href="/test">Sign into Spotify</a>
-      </li>
-    </ul>
 
     <%= yield %>
   </body>

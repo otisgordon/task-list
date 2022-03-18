@@ -1,85 +1,96 @@
-  <%= @returnedscrape %>
-  <% @returnedscrape.first(10).each do |movie| %>
-    <div class="row">
-      <div class="col-sm">
-      </div>
-      <div class="col-sm">
-       <% @search = Tmdb::Search.new %> 
-       <% @search.query(movie) # the query to search against %>
-        <% if @search.fetch.empty? == false %>
-          <% @result = @search.fetch # makes request  %>
-          <% id = @result[0]['id'] %>
-          <% movie = Tmdb::Movie.detail(id)%>
-            <% if movie.fetch("poster_path") != nil%>
-              <% @poster = "https://image.tmdb.org/t/p/original/" + movie.fetch("poster_path") %>
-              <img src=<%=@poster%> class="img-fluid" max height="10%" alt="poster">
-              <%= @song %>
-            <%end%>
-        <%end%>
-          <%if @search.fetch.empty? == true %>
-            <% p "No movie found" %>
-          <%end%>    
-      </div>
-      <div class="col-sm">
-      </div>
-    </div>
-  <% end %>`
 
+      <div class="container">
+        <div class="row">
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-    </div>
-    <div class="col-sm">
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src=<%=@poster%> class="d-block w-100" alt="..." max height="10%">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>First Movie</h5>
-                  <p>Song in the movie/TV Show</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src=<%=@poster%> class="d-block w-100" alt="..." max height="10%">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Second Movie/TV Show</h5>
-                  <p>Song in the movie/TV Show</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src=<%=@poster%> class="d-block w-100" alt="..." max height="10%">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Third Movie</h5>
-                  <p>Song in the movie/TV Show</p>
-                </div>
-              </div>
+          <div class="col"> 
+            <div class="songtitle">
+              <%= @artistarray.first%> 
             </div>
-            <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </button>
           </div>
-    </div>
-    <div class="col-sm">
-      
-    </div>
-  </div>
-</div>
 
+          <div class="col"> 
+            <div class="pic-ctn">
+              <% @posterarray.first(5).each do |poster| %>
+                <img src=<%= poster %> class="pic" alt="poster" href="https://www.google.com">
+                <% @posterarray.delete (poster)%>
+              <%end%>
+            </div>
+          </div>
 
+          <div class="w-100"></div>
 
+          <div class="col"> 
+            <div class="songtitletwo">
+              <%= @artistarray.second%> 
+            </div>
+          </div>
 
-  <!-- FOOTER -->
+          <div class="col"> 
+            <div class="pic-ctn">
+              <% @posterarray.first(5).each do |poster| %>
+                <img src=<%= poster %> class="pic" alt="poster" >
+                <% @posterarray.delete (poster)%>
+              <%end%>
+            </div>
+          </div>
+
+          <div class="w-100"></div>
+
+          <div class="col"> 
+            <div class="songtitlethree">
+              <%= @artistarray.third%> 
+            </div>
+          </div>
+
+          <div class="col"> 
+            <div class="pic-ctn">
+              <% @posterarray.first(5).each do |poster| %>
+                <img src=<%= poster %> class="pic" alt="poster" >
+                <% @posterarray.delete (poster)%>
+              <%end%>
+            </div>
+          </div>
+
+          <div class="w-100"></div>
+
+          <div class="col"> 
+            <div class="songtitlefour">
+              <%= @artistarray.fourth%> 
+            </div>
+          </div>
+
+          <div class="col"> 
+            <div class="pic-ctn">
+              <% @posterarray.first(5).each do |poster| %>
+                <img src=<%= poster %> class="pic" alt="poster" >
+                <% @posterarray.delete (poster)%>
+              <%end%>
+            </div>
+          </div>
+
+          <div class="w-100"></div>
+
+          <div class="col"> 
+            <div class="songtitlefive">
+              <%= @artistarray.fifth%> 
+            </div>
+          </div>
+
+          <div class="col"> 
+            <div class="pic-ctn">
+              <% @posterarray.first(5).each do |poster| %>
+                <img src=<%= poster %> class="pic" alt="poster" >
+                <% @posterarray.delete (poster)%>
+              <%end%>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+<%#end%>
+
+ <!-- FOOTER -->
   <footer class="container">
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>&copy; 2022 Skimpyrat Inc. &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></p>
