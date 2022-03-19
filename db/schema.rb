@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_03_08_201729) do
     t.string "email"
     t.string "password_digest"
     t.string "spotifytopsongs"
-    t.string "spotify_account"
+    t.text "spotify_account"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

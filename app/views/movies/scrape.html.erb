@@ -1,109 +1,83 @@
+<div class = nowplaying>
+    Now Playing
+</div>
 
-      <div class="container">
-        <div class="row">
+<div class = "download" >
+  <a href="https://www.themoviedb.org/t/p/w1280/onGdT8sYi89drvSJyEJnft97rOq.jpg" target="_blank" download="https://www.themoviedb.org/t/p/w1280/onGdT8sYi89drvSJyEJnft97rOq.jpg">Download image</a>
+</div>
 
-          <div class="col"> 
-            <div class="songtitle">
+<div class="wrapper">
+  <div class="item">
+      <div class="songtitle">
               <%= @artistarray.first%> 
-            </div>
-          </div>
-
-          <div class="col"> 
-            <div class="pic-ctn">
-              <% @posterarray.first(5).each do |poster| %>
-                <img src=<%= poster %> class="pic" alt="poster" href="https://www.google.com">
-                <% @posterarray.delete (poster)%>
-              <%end%>
-            </div>
-          </div>
-
-          <div class="w-100"></div>
-
-          <div class="col"> 
-            <div class="songtitletwo">
-              <%= @artistarray.second%> 
-            </div>
-          </div>
-
-          <div class="col"> 
-            <div class="pic-ctn">
-              <% @posterarray.first(5).each do |poster| %>
-                <img src=<%= poster %> class="pic" alt="poster" >
-                <% @posterarray.delete (poster)%>
-              <%end%>
-            </div>
-          </div>
-
-          <div class="w-100"></div>
-
-          <div class="col"> 
-            <div class="songtitlethree">
-              <%= @artistarray.third%> 
-            </div>
-          </div>
-
-          <div class="col"> 
-            <div class="pic-ctn">
-              <% @posterarray.first(5).each do |poster| %>
-                <img src=<%= poster %> class="pic" alt="poster" >
-                <% @posterarray.delete (poster)%>
-              <%end%>
-            </div>
-          </div>
-
-          <div class="w-100"></div>
-
-          <div class="col"> 
-            <div class="songtitlefour">
-              <%= @artistarray.fourth%> 
-            </div>
-          </div>
-
-          <div class="col"> 
-            <div class="pic-ctn">
-              <% @posterarray.first(5).each do |poster| %>
-                <img src=<%= poster %> class="pic" alt="poster" >
-                <% @posterarray.delete (poster)%>
-              <%end%>
-            </div>
-          </div>
-
-          <div class="w-100"></div>
-
-          <div class="col"> 
-            <div class="songtitlefive">
-              <%= @artistarray.fifth%> 
-            </div>
-          </div>
-
-          <div class="col"> 
-            <div class="pic-ctn">
-              <% @posterarray.first(5).each do |poster| %>
-                <img src=<%= poster %> class="pic" alt="poster" >
-                <% @posterarray.delete (poster)%>
-              <%end%>
-            </div>
-          </div>
-
-        </div>
       </div>
+      <% @posterarray.first(5).each do |poster| %>
+        <img src=<%= poster %> class="pic" alt="poster" src="https://www.rottentomatoes.com/">
+        <% @posterarray.delete (poster)%>
+      <%end%>
+  </div>
+</div>
 
-<%#end%>
+<div class="wrapper">
+  <div class="item">
+      <div class="songtitletwo">
+              <%= @artistarray.second%> 
+      </div>
+      <% @posterarray.first(5).each do |poster| %>
+        <img src=<%= poster %> class="pic" alt="poster" src="https://www.rottentomatoes.com/">
+        <% @posterarray.delete (poster)%>
+      <%end%>
+  </div>
+</div>
 
+<div class="wrapper">
+  <div class="item">
+      <div class="songtitlethree">
+              <%= @artistarray.third%> 
+      </div>
+      <% @posterarray.first(5).each do |poster| %>
+        <img src=<%= poster %> class="pic" alt="poster" src="https://www.rottentomatoes.com/">
+        <% @posterarray.delete (poster)%>
+      <%end%>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="item">
+      <div class="songtitlefour">
+              <%= @artistarray.fourth%> 
+      </div>
+      <% @posterarray.first(5).each do |poster| %>
+        <img src=<%= poster %> class="pic" alt="poster" src="https://www.rottentomatoes.com/">
+        <% @posterarray.delete (poster)%>
+      <%end%>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="item">
+      <div class="songtitlefive">
+              <%= @artistarray.fifth%> 
+      </div>
+      <% @posterarray.first(5).each do |poster| %>
+        <img src=<%= poster %> class="pic" alt="poster" src="https://www.rottentomatoes.com/">
+        <% @posterarray.delete (poster)%>
+      <%end%>
+  </div>
+</div>
+  
  <!-- FOOTER -->
-  <footer class="container">
+  <footer class="container-fluid">
     <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2022 Skimpyrat Inc. &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></p>
+    <p>&copy; 2022 Skimpyrat Inc. &middot; <a href="/about" target="_blank">About</a> &middot; <a href="https://www.venmo.com" target="_blank">Donate plz:)</a> <a href="/home"">  Back to home</a></p>
   </footer>
-</main>
-
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-      
+</main>      
   </body>
 </html>
 
+<script src="FileSaver.min.js"></script>
+<script src="dom-to-image.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 
 
